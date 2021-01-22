@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a55361ade8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Portfolio</title>
 </head>
 <body>
@@ -27,13 +28,17 @@
                     </div>
                 </div>
 
-                <nav class="nav">
+                <nav class="nav" id="nav">
                     <a class="nav__link" href="#">work</a>
                     <a class="nav__link" href="#">about me</a>
                     <a class="nav__link" href="#">blog</a>
                     <a class="nav__link" href="#">contact</a>
-                    <a class="nav__link nav__link--btn" href="#">hire me</a>
+                    <a class="nav__link nav__link--btn" href="#" data-modal="#modal_hire_me">hire me</a>
                 </nav>
+
+                <button class="burger" type="button" id="navToggle">
+                    <img class="burger__icon" src="img/burger.svg" alt="">
+                </button>
             </div>
         </div>
     </header>
@@ -69,8 +74,8 @@
                         </a>
                     </div>
 
-                    <a class="btn" href="#">Hire me</a>
-                    <button class="btn" type="button">See my resume</button>
+                    <a class="btn" href="#" data-modal="#modal_hire_me">Hire me</a>
+                    <button class="btn" type="button" data-modal="#modal_resume">See my resume</button>
                 </div>    
                 
                 <img class="intro__photo" src="img/photo.png" alt="">
@@ -82,18 +87,18 @@
     <div class="works">
         <div class="container">
             <div class="works__nav">
-                <a href="" class="works__nav--link">All</a>
-                <a href="" class="works__nav--link">App</a>
-                <a href="" class="works__nav--link">Websites</a>
-                <a href="" class="works__nav--link">Interaction</a>
+                <a href="" class="works__nav--link" data-filter="all">All</a>
+                <a href="" class="works__nav--link" data-filter="app">App</a>
+                <a href="" class="works__nav--link" data-filter="website">Websites</a>
+                <a href="" class="works__nav--link" data-filter="interaction">Interaction</a>
             </div>
 
             <div class="portfolio">
-                <div class="portfolio__col">
-                    <div class="work">
+                <div class="portfolio__col" data-cat="app">
+                    <div class="work" data-modal="#modal_project_1">
                         <img class="work__image" src="https://via.placeholder.com/370x300" alt="">
                         <div class="work__content">
-                            <div class="work__cat">category</div>
+                            <div class="work__cat">category: app</div>
                             <div class="work__title">
                                 Project title
                                 <time class="work__date" datetime="2019-11-22 19:00">2019</time>
@@ -102,11 +107,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio__col">
-                    <div class="work">
+                <div class="portfolio__col" data-cat="website">
+                    <div class="work" data-modal="#modal_project_2">
                         <img class="work__image" src="https://via.placeholder.com/370x300" alt="">
                         <div class="work__content">
-                            <div class="work__cat">category</div>
+                            <div class="work__cat">category: website</div>
                             <div class="work__title">
                                 Project title
                                 <time class="work__date" datetime="2019-11-22 19:00">2019</time>
@@ -115,11 +120,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio__col">
+                <div class="portfolio__col" data-cat="interaction">
                     <div class="work">
                         <img class="work__image" src="https://via.placeholder.com/370x300" alt="">
                         <div class="work__content">
-                            <div class="work__cat">category</div>
+                            <div class="work__cat">category: interaction</div>
                             <div class="work__title">
                                 Project title
                                 <time class="work__date" datetime="2019-11-22 19:00">2019</time>
@@ -128,11 +133,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio__col">
+                <div class="portfolio__col" data-cat="interaction">
                     <div class="work">
                         <img class="work__image" src="https://via.placeholder.com/370x300" alt="">
                         <div class="work__content">
-                            <div class="work__cat">category</div>
+                            <div class="work__cat">category: interaction</div>
                             <div class="work__title">
                                 Project title
                                 <time class="work__date" datetime="2019-11-22 19:00">2019</time>
@@ -141,11 +146,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio__col">
+                <div class="portfolio__col" data-cat="app">
                     <div class="work">
                         <img class="work__image" src="https://via.placeholder.com/370x300" alt="">
                         <div class="work__content">
-                            <div class="work__cat">category</div>
+                            <div class="work__cat">category: app</div>
                             <div class="work__title">
                                 Project title
                                 <time class="work__date" datetime="2019-11-22 19:00">2019</time>
@@ -154,11 +159,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio__col">
+                <div class="portfolio__col" data-cat="website">
                     <div class="work">
                         <img class="work__image" src="https://via.placeholder.com/370x300" alt="">
                         <div class="work__content">
-                            <div class="work__cat">category</div>
+                            <div class="work__cat">category: website</div>
                             <div class="work__title">
                                 Project title
                                 <time class="work__date" datetime="2019-11-22 19:00">2019</time>
@@ -167,11 +172,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio__col">
+                <div class="portfolio__col" data-cat="website">
                     <div class="work">
                         <img class="work__image" src="https://via.placeholder.com/370x300" alt="">
                         <div class="work__content">
-                            <div class="work__cat">category</div>
+                            <div class="work__cat">category: website</div>
                             <div class="work__title">
                                 Project title
                                 <time class="work__date" datetime="2019-11-22 19:00">2019</time>
@@ -180,11 +185,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio__col">
+                <div class="portfolio__col" data-cat="website">
                     <div class="work">
                         <img class="work__image" src="https://via.placeholder.com/370x300" alt="">
                         <div class="work__content">
-                            <div class="work__cat">category</div>
+                            <div class="work__cat">category: website</div>
                             <div class="work__title">
                                 Project title
                                 <time class="work__date" datetime="2019-11-22 19:00">2019</time>
@@ -193,11 +198,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio__col">
+                <div class="portfolio__col" data-cat="website">
                     <div class="work">
                         <img class="work__image" src="https://via.placeholder.com/370x300" alt="">
                         <div class="work__content">
-                            <div class="work__cat">category</div>
+                            <div class="work__cat">category: website</div>
                             <div class="work__title">
                                 Project title
                                 <time class="work__date" datetime="2019-11-22 19:00">2019</time>
@@ -230,8 +235,8 @@
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis itaque dignissimos nisi, doloribus, est doloremque tempore labore asperiores harum iusto dolor, ratione placeat repudiandae. Repellendus debitis provident ducimus fuga? Voluptates!</p>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis itaque dignissimos nisi, doloribus, est doloremque tempore labore asperiores harum iusto dolor, ratione placeat repudiandae. Repellendus debitis provident ducimus fuga? Voluptates!</p>
                     </div>
-                        <a class="btn" href="#">Hire me</a>
-                        <button class="btn" type="button">See my resume</button>
+                        <a class="btn" href="#" data-modal="#modal_hire_me">Hire me</a>
+                        <button class="btn" type="button" data-modal="#modal_resume">See my resume</button>
                 </div><!-- about__content -->
             </div><!-- /.about__innee -->
 
@@ -354,7 +359,7 @@
                     <a href="#" class="footer__nav-link">About me</a>
                     <a href="#" class="footer__nav-link">BLog</a>
                     <a href="#" class="footer__nav-link">Contact</a>
-                    <a href="#" class="footer__nav-link footer__nav-link--btn">Hire me</a>
+                    <a href="#" class="footer__nav-link footer__nav-link--btn" data-modal="#modal_hire_me">Hire me</a>
                 </nav>
             </div><!-- /.footer__inner -->
         </div><!-- /.container -->
@@ -363,14 +368,21 @@
 
     <!-- Modals -->
 
-    <div class="modal">
+    <div class="modal" id="modal_project_1">
         <div class="modal__dialog">
-            <button class="modal__close" type="button">
+            <button class="modal__close" type="button" data-close>
                 <img src="img/modal-close.svg" alt="close">
             </button>
             <div class="modal-work">
                 <div class="modal-work__preview">
-                    <img class="modal-work__photo" src="https://placehold.it/790x780" alt="">
+                    <div data-slider="slick">
+                        <div>
+                            <img class="modal-work__photo" src="https://placehold.it/790x780" alt="">
+                        </div>
+                        <div>
+                            <img class="modal-work__photo" src="https://placehold.it/790x780/333" alt="">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-work__content">
                     <div class="modal-work__header">
@@ -389,10 +401,10 @@
                     </div>
 
                     <div class="modal-work__footer">
-                        <button class="modal-work__btn modal-work__btn--prev" type="button">
+                        <button class="modal-work__btn modal-work__btn--prev slickPrev" type="button">
                             <img src="img/left-arrow (1).svg" height="12" alt="">
                             PREVIOUS</button>
-                        <button class="modal-work__btn modal-work__btn--nex" type="button">
+                        <button class="modal-work__btn modal-work__btn--nex slickNext" type="button">
                             NEXT 
                             <img src="img/right-arrow.svg" height="12" alt="">
                         </button>
@@ -402,9 +414,55 @@
         </div><!-- /.modal__dialog  -->
     </div><!-- /.modal -->
 
-    <div class="modal" style="display: none;">
+    <div class="modal" id="modal_project_2">
         <div class="modal__dialog">
-            <button class="modal__close" type="button">
+            <button class="modal__close" type="button" data-close>
+                <img src="img/modal-close.svg" alt="close">
+            </button>
+            <div class="modal-work">
+                <div class="modal-work__preview">
+                    <div data-slider="slick">
+                        <div>
+                            <img class="modal-work__photo" src="https://placehold.it/790x780" alt="">
+                        </div>
+                        <div>
+                            <img class="modal-work__photo" src="https://placehold.it/790x780/333" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-work__content">
+                    <div class="modal-work__header">
+                        <h3 class="modal-work__title">Project title 2</h3>
+                        <div class="modal-work__info">
+                            category <span class="modal-work__info-divider">|</span> 2018
+                        </div>
+                    </div>
+                    <div class="modal-work__client">
+                        <div class="modal-work__client-title">Client:</div>
+                        <div class="modal-work__client-company">Creative Agency</div>
+                    </div>
+                    <div class="modal-work__text">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore odit, ea dolorem eius facilis porro mollitia quis laborum rerum officiis excepturi totam accusantium dolores ad, vero obcaecati quo explicabo quos.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore odit, ea dolorem eius facilis porro mollitia quis laborum rerum officiis excepturi totam accusantium dolores ad, vero obcaecati quo explicabo quos.</p>
+                    </div>
+
+                    <div class="modal-work__footer">
+                        <button class="modal-work__btn modal-work__btn--prev slickPrev" type="button">
+                            <img src="img/left-arrow (1).svg" height="12" alt="">
+                            PREVIOUS</button>
+                        <button class="modal-work__btn modal-work__btn--nex slickNext" type="button">
+                            NEXT 
+                            <img src="img/right-arrow.svg" height="12" alt="">
+                        </button>
+                    </div>
+                </div><!-- /.modal-work__content -->
+            </div><!-- /.modal-work -->
+        </div><!-- /.modal__dialog  -->
+    </div><!-- /.modal -->
+
+    <div class="modal" id="modal_resume">
+        <div class="modal__dialog">
+            <button class="modal__close" type="button" data-close>
                 <img src="img/modal-close.svg" alt="close">
             </button>
 
@@ -523,9 +581,9 @@
         </div><!-- /.modal__dialog  -->
     </div><!-- /.modal -->
 
-    <div class="modal" style="display: none;">
+    <div class="modal" id="modal_hire_me">
         <div class="modal__dialog modal__dialog--sm">
-            <button class="modal__close" type="button">
+            <button class="modal__close" type="button" data-close>
                 <img src="img/modal-close.svg" alt="close">
             </button>
 
@@ -562,5 +620,9 @@
             
         </div><!-- /.modal__dialog  -->
     </div><!-- /.modal -->
+
+    <!-- JS -->
+    <script src="js/slick.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
